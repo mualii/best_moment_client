@@ -1,6 +1,7 @@
 import 'package:best_moment_client/models/checkboxmodel.dart';
 import 'package:best_moment_client/screens/search_result_screen/widget/drop_menu_with.dart';
 import 'package:best_moment_client/screens/search_result_screen/widget/rowcheckbox.dart';
+import 'package:best_moment_client/screens/search_result_screen/widget/show_drop_box.dart';
 import 'package:best_moment_client/widgets/defaultButton.dart';
 import 'package:flutter/material.dart';
 
@@ -213,7 +214,21 @@ class _FiltterScreenState extends State<FiltterScreen> {
               ],
             ),
             HighcheckBox[index].isChecked
-                ? ShowDropBox(context, data)
+                ? ShowDropBox(
+                    context: context,
+                    data: data,
+                    ischange: rememberMe2,
+                    ischange2: rememberMe3,
+                    onTap: (val) {
+                      setState(() {
+                        rememberMe2 = !rememberMe2;
+                      });
+                    },
+                    onChange: (val) {
+                      setState(() {
+                        rememberMe3 = !rememberMe3;
+                      });
+                    })
                 : Container(),
           ],
         ),
@@ -222,141 +237,4 @@ class _FiltterScreenState extends State<FiltterScreen> {
   }
 // ======================   Show Drop Box =========================
 
-  Row ShowDropBox(BuildContext context, String data) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Column(
-          // crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(),
-            SizedBox(height: 55),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.black26)),
-              width: MediaQuery.of(context).size.width * .35,
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                    hintText: 'العرض',
-                    hintStyle: TextStyle(
-                      color: Color(0xffAAAAAA),
-                      fontSize: 16,
-                    )),
-              ),
-            ),
-            SizedBox(height: 5),
-            Container(
-              margin: EdgeInsets.only(left: 5),
-              child: DropMenuWithSearch(
-                width: MediaQuery.of(context).size.width * .4,
-                hintText: 'نوع التكييف',
-                iconSet: Icons.arrow_back_ios,
-                listData: ['Test'],
-                onValueChanged: (v) {
-                  data = v;
-                },
-                dropdownValueData: data,
-              ),
-            ),
-            Row(
-              children: [
-                Text(
-                  'مشب',
-                  style: TextStyle(fontSize: 18),
-                ),
-                Checkbox(
-                    checkColor: Colors.green,
-                    activeColor: Colors.white10,
-                    value: rememberMe2,
-                    onChanged: (val) {
-                      setState(() {
-                        rememberMe2 = !rememberMe2;
-                      });
-                    }),
-              ],
-            )
-          ],
-        ),
-        Spacer(),
-        Column(
-          // crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.black26)),
-              width: MediaQuery.of(context).size.width * .35,
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                    hintText: 'عدد الاشخاص',
-                    hintStyle: TextStyle(
-                      color: Color(0xffAAAAAA),
-                      fontSize: 16,
-                    )),
-              ),
-            ),
-            SizedBox(height: 5),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.black26)),
-              width: MediaQuery.of(context).size.width * .35,
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                    hintText: 'الطول',
-                    hintStyle: TextStyle(
-                      color: Color(0xffAAAAAA),
-                      fontSize: 16,
-                    )),
-              ),
-            ),
-            SizedBox(height: 5),
-            Container(
-              margin: EdgeInsets.only(right: 5),
-              child: DropMenuWithSearch(
-                width: MediaQuery.of(context).size.width * .4,
-                hintText: 'نوع التكييف',
-                iconSet: Icons.arrow_back_ios,
-                listData: ['Test'],
-                onValueChanged: (v) {
-                  data = v;
-                },
-                dropdownValueData: data,
-              ),
-            ),
-            Row(
-              children: [
-                Text(
-                  'تدفئة',
-                  style: TextStyle(fontSize: 18),
-                ),
-                Checkbox(
-                    checkColor: Colors.green,
-                    activeColor: Colors.white10,
-                    value: rememberMe3,
-                    onChanged: (val) {
-                      setState(() {
-                        rememberMe3 = !rememberMe3;
-                      });
-                    }),
-              ],
-            )
-          ],
-        ),
-      ],
-    );
-  }
 } //كود الاستراحة/
