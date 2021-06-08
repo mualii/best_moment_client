@@ -100,7 +100,7 @@ class _FiltterScreenState extends State<FiltterScreen> {
               RowSelect(
                 onChange: (val) {
                   setState(() {
-                    HighcheckBox[0].isChecked = !HighcheckBox[0].isChecked;
+                    HighcheckBox[1].isChecked = !HighcheckBox[1].isChecked;
                   });
                 },
                 list: HighcheckBox,
@@ -236,10 +236,11 @@ class _FiltterScreenState extends State<FiltterScreen> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.black26)),
-              width: MediaQuery.of(context).size.width * .4,
+              width: MediaQuery.of(context).size.width * .35,
               child: TextFormField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
+                    border: InputBorder.none,
                     contentPadding: EdgeInsets.zero,
                     hintText: 'العرض',
                     hintStyle: TextStyle(
@@ -249,15 +250,18 @@ class _FiltterScreenState extends State<FiltterScreen> {
               ),
             ),
             SizedBox(height: 5),
-            DropMenuWithSearch(
-              width: MediaQuery.of(context).size.width * .4,
-              hintText: 'نوع التكييف',
-              iconSet: Icons.arrow_back_ios,
-              listData: ['Test'],
-              onValueChanged: (v) {
-                data = v;
-              },
-              dropdownValueData: data,
+            Container(
+              margin: EdgeInsets.only(left: 5),
+              child: DropMenuWithSearch(
+                width: MediaQuery.of(context).size.width * .4,
+                hintText: 'نوع التكييف',
+                iconSet: Icons.arrow_back_ios,
+                listData: ['Test'],
+                onValueChanged: (v) {
+                  data = v;
+                },
+                dropdownValueData: data,
+              ),
             ),
             Row(
               children: [
@@ -291,6 +295,7 @@ class _FiltterScreenState extends State<FiltterScreen> {
               child: TextFormField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
+                    border: InputBorder.none,
                     contentPadding: EdgeInsets.zero,
                     hintText: 'عدد الاشخاص',
                     hintStyle: TextStyle(
@@ -309,6 +314,7 @@ class _FiltterScreenState extends State<FiltterScreen> {
               child: TextFormField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
+                    border: InputBorder.none,
                     contentPadding: EdgeInsets.zero,
                     hintText: 'الطول',
                     hintStyle: TextStyle(
@@ -318,15 +324,18 @@ class _FiltterScreenState extends State<FiltterScreen> {
               ),
             ),
             SizedBox(height: 5),
-            DropMenuWithSearch(
-              width: MediaQuery.of(context).size.width * .4,
-              hintText: 'نوع التكييف',
-              iconSet: Icons.arrow_back_ios,
-              listData: ['Test'],
-              onValueChanged: (v) {
-                data = v;
-              },
-              dropdownValueData: data,
+            Container(
+              margin: EdgeInsets.only(right: 5),
+              child: DropMenuWithSearch(
+                width: MediaQuery.of(context).size.width * .4,
+                hintText: 'نوع التكييف',
+                iconSet: Icons.arrow_back_ios,
+                listData: ['Test'],
+                onValueChanged: (v) {
+                  data = v;
+                },
+                dropdownValueData: data,
+              ),
             ),
             Row(
               children: [

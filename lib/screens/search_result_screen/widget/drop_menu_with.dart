@@ -73,7 +73,7 @@ class DropMenuWithSearch extends StatelessWidget {
                 ),
                 Text(
                   hintText,
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
               ],
             ),
